@@ -39,7 +39,7 @@ LTrackerMenuItem::InitObject( const entry_ref* ref )
 
 	// icon
 	BRect	iconRect( 0, 0, B_MINI_ICON-1, B_MINI_ICON-1 );
-	mMiniIcon = new BBitmap( iconRect, B_COLOR_8_BIT );
+	mMiniIcon = new BBitmap( iconRect, B_RGBA32 );
 	BNodeInfo::GetTrackerIcon( ref, mMiniIcon, B_MINI_ICON );
 }
 
