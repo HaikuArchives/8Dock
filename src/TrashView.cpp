@@ -26,8 +26,8 @@ CTrashView::CTrashView( BPoint p )
 	: BView( BRect( p.x, p.y, p.x+32,p.y+32 ), "TrashView", B_FOLLOW_H_CENTER | B_FOLLOW_BOTTOM,
 		B_WILL_DRAW )
 {
-	iconL = new BBitmap( BRect( 0,0,31,31 ), B_COLOR_8_BIT );
-	iconS = new BBitmap( BRect( 0,0,15,15 ), B_COLOR_8_BIT );
+	iconL = new BBitmap( BRect( 0,0,31,31 ), B_RGBA32 );
+	iconS = new BBitmap( BRect( 0,0,15,15 ), B_RGBA32 );
 	bHighlight = false;
 	menuok = false;
 }

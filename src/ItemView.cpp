@@ -367,9 +367,9 @@ void CItemView::SetData()
 	mNodeInfo.SetTo( &mNode );	
 	
 	if( mSmallIcon == NULL )
-		mSmallIcon = new BBitmap( BRect( 0, 0, 15, 15 ), B_COLOR_8_BIT );
+		mSmallIcon = new BBitmap( BRect( 0, 0, 15, 15 ), B_RGBA32 );
 	if( mLargeIcon == NULL )
-		mLargeIcon = new BBitmap( BRect( 0, 0, 31, 31 ), B_COLOR_8_BIT );
+		mLargeIcon = new BBitmap( BRect( 0, 0, 31, 31 ), B_RGBA32 );
 
 
 	BNodeInfo::GetTrackerIcon(  &mRef, mLargeIcon, B_LARGE_ICON  );
