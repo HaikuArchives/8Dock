@@ -4,6 +4,7 @@
 
 #include <Entry.h>
 #include <View.h>
+#include <PopUpMenu.h>
 
 class CTrashView : public BView
 {

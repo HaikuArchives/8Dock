@@ -5,6 +5,7 @@
 #include <Node.h>
 #include <NodeInfo.h>
 #include <Path.h>
+#include <PopUpMenu.h>
 
 class CItemListView;
 

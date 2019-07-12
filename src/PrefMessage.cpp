@@ -5,6 +5,7 @@
 #include <stdio.h>
 #include <DataIO.h>
 #include <Directory.h>
+#include <File.h>
 
 CPrefMessage::CPrefMessage( const char *filename )
 	: BMessage( 'pref' )

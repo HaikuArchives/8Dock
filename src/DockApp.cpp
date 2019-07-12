@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <DirectWindow.h>
 #include <Alert.h>
+#include <PopUpMenu.h>
 
 #include "DockApp.h"
 
