@@ -16,7 +16,6 @@ CDockWindow::CDockWindow( BRect r, bool haslabel, bool isbigicon, bool trash )
 	mSettings = dapp->_prefs;
 	mView = new CWindowView( Bounds(), haslabel, isbigicon, trash );
 	AddChild( mView );
-	
 }
 
 void CDockWindow::MessageReceived( BMessage *msg )

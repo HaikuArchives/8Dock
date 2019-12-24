@@ -52,7 +52,7 @@ void CDockApp::ReadyToRun()
 
 	mwDock->MoveTo( x, y );
 	mwDock->ResizeTo( xw, yw );
-	mwDock->SetSizeLimits( 48, 200, 100, r.bottom - 4 ); 
+	mwDock->SetSizeLimits( 100, 10000, 200, r.bottom - 4 );
 
 	mwDock->Show();
 }
