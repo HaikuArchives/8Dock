@@ -8,9 +8,6 @@
 #include "WindowView.h"
 #include "PrefMessage.h"
 
-#define MIN_WINDOW_WIDTH 	100
-#define MIN_WINDOW_HEIGHT	200
-
 class CDockWindow : public BWindow
 {
 public:

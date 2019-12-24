@@ -16,7 +16,6 @@ CDockWindow::CDockWindow( BRect r, bool haslabel, bool isbigicon, bool trash )
 	mSettings = dapp->_prefs;
 	mView = new CWindowView( Bounds(), haslabel, isbigicon, trash );
 	AddChild( mView );
-	
 }
 
 void CDockWindow::MessageReceived( BMessage *msg )
@@ -53,9 +52,6 @@ void CDockWindow::ScreenChanged( BRect r, color_space cs )
 
 void CDockWindow::FrameResized( float x, float y )
 {
-	if(x<MIN_WINDOW_WIDTH) x=MIN_WINDOW_WIDTH;
-	if(y<MIN_WINDOW_HEIGHT) y=MIN_WINDOW_HEIGHT;
-
 	float f;
 	
 	if( mSettings->FindFloat( "xwidth", &f ) == B_NAME_NOT_FOUND )
@@ -67,7 +63,6 @@ void CDockWindow::FrameResized( float x, float y )
 		mSettings->AddFloat( "ywidth", y );
 	else
 		mSettings->ReplaceFloat( "ywidth", y );
-	ResizeTo(x,y);
 }
 
 void CDockWindow::FrameMoved( BPoint p )
