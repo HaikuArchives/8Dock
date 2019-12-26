@@ -67,7 +67,7 @@ void CTrashView::AttachedToWindow( void )
 	if( watch_node( &nref, B_WATCH_DIRECTORY, BMessenger( this ) ) != B_NO_ERROR )
 		(new BAlert( "zz", "62 watch_node(  ) for Trash failed", "OK"  ))->Go();    
 		
-	menu = new BPopUpMenu( "HUH?" );
+	menu = new BPopUpMenu( "HUH?" , false, false);
 	BMenuItem *m;
 
 	m = new BMenuItem( "Empty Trash" , new BMessage( 'empt' ) );
