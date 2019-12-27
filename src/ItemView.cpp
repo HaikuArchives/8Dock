@@ -338,8 +338,10 @@ void CItemView::SetData( BPath &p )
 {
 	if( !bIsEmpty )
 	{
+		if (mDockPos >= SLOT_COUNT - 1)
+			return;
 		BPath path = mPath.Path();
-		( ( CItemView *)mItemListView->mItemList.ItemAt( ( mDockPos+1 ) % SLOT_COUNT ) )->SetData( path );
+		((CItemView*) mItemListView->mItemList.ItemAt(mDockPos + 1))->SetData(path);
 	}
 	
 	BEntry e( p.Path() );
@@ -364,13 +366,12 @@ void CItemView::SetData()
 	bDrawBorder = false;
 	
 	mNode.SetTo( &mRef );
-	mNodeInfo.SetTo( &mNode );	
-	
+	mNodeInfo.SetTo( &mNode );
+
 	if( mSmallIcon == NULL )
 		mSmallIcon = new BBitmap( BRect( 0, 0, 15, 15 ), B_RGBA32 );
 	if( mLargeIcon == NULL )
 		mLargeIcon = new BBitmap( BRect( 0, 0, 31, 31 ), B_RGBA32 );
-
 
 	BNodeInfo::GetTrackerIcon(  &mRef, mLargeIcon, B_LARGE_ICON  );
 	BNodeInfo::GetTrackerIcon(  &mRef, mSmallIcon, B_MINI_ICON  );
