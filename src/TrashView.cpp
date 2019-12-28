@@ -199,7 +199,8 @@ void CTrashView::MessageReceived( BMessage *msg )
 			Invalidate(  );
 			break;
 		case B_SIMPLE_DATA :
-			if( msg->FindInt32( "slot" ) )
+			int32 num;
+			if( msg->FindInt32( "slot", &num ) == B_OK )
 				msg->SendReply( new BMessage( '8dcl' ) );
 			else
 				MoveToTrash( msg ); 
