@@ -43,16 +43,6 @@ void CTrashView::AttachedToWindow( void )
 
 	SetDrawingMode( B_OP_OVER );
 
-	systemColors = system_colors(  );
-	for ( int i = 0; i < 256; ++i ) 
-	{              
-		rgb_color aColor = systemColors->color_list[i]; 
-		aColor.red = ( long )aColor.red * 2 / 3; 
-		aColor.green = ( long )aColor.green * 2 / 3; 
-		aColor.blue = ( long )aColor.blue * 2 / 3; 
-		mHiliteTable[i] = screen.IndexForColor( aColor );        //( ( ( aColor.red>>3 )&0x1f )<<10 )+( ( ( aColor.green>>3 )&0x1f )<<5 )+( ( aColor.blue>>3 )&0x1f ); 
-	} 
-
 	e.GetRef( &mRef );
 
 	BNodeInfo::GetTrackerIcon( &mRef, iconL, B_LARGE_ICON );
@@ -92,12 +82,13 @@ void CTrashView::MouseMoved( BPoint p, uint32 code, const BMessage *msg )
 		bHighlight = true;
 		if( msg->what == B_SIMPLE_DATA )
 		{
-			uchar *data = ( uchar * )iconL->Bits(  );
-			for ( long i = 0; i < iconL->BitsLength(  ); ++i ) 
-			{
-				if( *( data+i ) != B_TRANSPARENT_8_BIT )	
-					*( data+i ) = mHiliteTable[*( data+i )];
-			}	
+			rgb_color *data = (rgb_color*)iconL->Bits();
+			for (int32 i = 0; i < iconL->BitsLength(); i += 4) {
+				data->red   = (int32)data->red   * 2 / 3;
+				data->green = (int32)data->green * 2 / 3;
+				data->blue  = (int32)data->blue  * 2 / 3;
+				data++;
+			}
 			Invalidate(  );
 		}
 	}

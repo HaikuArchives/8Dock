@@ -34,8 +34,6 @@ private:
 	BBitmap			*iconL;
 	BEntry			entry;
 	entry_ref			mRef;
-	uchar 			mHiliteTable[256]; 
-	const color_map 		*systemColors; 
 };
 
 #endif

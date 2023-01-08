@@ -52,7 +52,7 @@ void CItemListView::SetLayout( bool bLabel, bool bBig )	// has label, has big ic
 	if( Window()->Lock() )
 	{
 		CItemView *v;
-		float width = Bounds().IntegerWidth()-4;
+		float width = Bounds().IntegerWidth();
 			
 		if( !bBig )
 		{
@@ -66,7 +66,7 @@ void CItemListView::SetLayout( bool bLabel, bool bBig )	// has label, has big ic
 		for( int32 i = 0; i < SLOT_COUNT; i++ )
 		{
 			v = ( CItemView *)mItemList.ItemAt( i );
-			v->MoveTo( 1, i * ( mSlotSize.y + 1 )+1 );
+			v->MoveTo( 0, i * ( mSlotSize.y + 1 ) );
 			v->ResizeTo( mSlotSize.x, mSlotSize.y );
 			v->SetLayout( bLabel, bBig );
 		}
@@ -93,7 +93,7 @@ void CItemListView::InitViews( bool bL, bool bB )
 		BNode n;
 		for( mCount = 0; mCount < SLOT_COUNT; mCount++ )
 		{
-			float width = Bounds().IntegerWidth()-4;
+			float width = Bounds().IntegerWidth();
 			
 			if( !bB )
 			{
@@ -104,8 +104,8 @@ void CItemListView::InitViews( bool bL, bool bB )
 				mSlotSize.Set( width, 48 );
 			}
 			
-			float x = 1;
-			float y = mCount * ( mSlotSize.y + 1 )+1;
+			float x = 0;
+			float y = mCount * ( mSlotSize.y + 1 );
 			v = new CItemView( BRect(x, y, x+mSlotSize.x, y+mSlotSize.y), mCount, this, bL, bB ); // label, big
 			AddChild(  v  );
 			
