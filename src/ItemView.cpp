@@ -294,8 +294,9 @@ void CItemView::MouseDown( BPoint p )
 	}
 }
 
-void CItemView::Draw( BRect r )
+void CItemView::Draw( BRect dirty )
 {
+	CPanelView::Draw( dirty );
 	
 	if( !bIsEmpty )
 	{
@@ -331,7 +332,6 @@ void CItemView::Draw( BRect r )
 	}
 	SetHighColor( CPanelView::mHighColor.red-2, CPanelView::mHighColor.green-2, CPanelView::mHighColor.blue-2 );
 
-	CPanelView::Draw( r );
 }
 
 void CItemView::SetData( BPath &p )

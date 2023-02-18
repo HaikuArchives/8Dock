@@ -1,4 +1,5 @@
 #include "PanelView.h"
+#include <ControlLook.h>
 
 //BRect frame, const char *name, uint32 resizingMode, uint32 flags
 
@@ -9,13 +10,16 @@ CPanelView::CPanelView( BRect r, const char* name, uint32 mode, uint32 flags, bo
 	SetViewColor( B_TRANSPARENT_COLOR );
 }
 
-void CPanelView::Draw( BRect r )
+void CPanelView::Draw( BRect dirty )
 {
-	DrawBorder( r );
+	DrawBorder( dirty );
 }
 
-void CPanelView::DrawBorder( BRect r )
+void CPanelView::DrawBorder( BRect dirty )
 {
+	BRect bounds = Bounds();
+	be_control_look->DrawMenuBarBackground(this, bounds, dirty, ViewColor());
+	return;
 	BeginLineArray( 4 );
 	if( mIsRaised )
 		SetHighColor( mHighColor );

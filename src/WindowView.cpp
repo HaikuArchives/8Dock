@@ -4,6 +4,7 @@
 #include "TrashView.h"
 #include "ItemListView.h"
 #include <View.h>
+#include <ControlLook.h>
 
 CWindowView::CWindowView( BRect r, bool haslabel, bool isbigicon, bool trash )
 	: CPanelView( r, "DockView", B_FOLLOW_ALL, 
@@ -34,18 +35,20 @@ void CWindowView::AttachedToWindow()
 
 
 
-	mItemListView = new CItemListView( BRect( 4, 14, rect.right -2, rect.bottom - 52 ) );
+	mItemListView = new CItemListView( BRect( 4, 14, rect.right - 4, rect.bottom - 52 ) );
 	AddChild( mItemListView );
 	mItemListView->InitViews( bLabel, bBig );
 }
 
-void CWindowView::Draw( BRect r )
+void CWindowView::Draw( BRect dirty )
 {
-	
 	BRect sr = Bounds(); //BRect( 4, 12, rect.right - rect.left - 4, rect.bottom - rect.top - 52 ); //mItemListView - >ConvertToParent( mItemListView - >Bounds() );
-	sr.InsetBy( 4, 4 );
-	sr.SetLeftTop( BPoint( sr.left, sr.top  +  10 ) );
-	sr.SetLeftBottom( BPoint( sr.left, sr.bottom  -  48 ) );
+	sr = BRect( 4, 14, sr.right - 4, sr.bottom - 52 );
+	sr.InsetBy( -2, -2 );
+	SetHighColor(0, 0, 0);
+	FillRect(sr);
+	be_control_look->DrawBorder(this, sr, dirty, ViewColor(), B_FANCY_BORDER);
+/*
 	SetHighColor( GetLowColor() );
 	MovePenTo( sr.right + 1, sr.top - 1 );
 	StrokeLine( BPoint( sr.left - 1, sr.top - 1 ) );
@@ -53,6 +56,6 @@ void CWindowView::Draw( BRect r )
 	SetHighColor( GetHighColor() );
 	StrokeLine( BPoint( sr.right + 1, sr.bottom + 1 ) );
 	StrokeLine( BPoint( sr.right + 1, sr.top - 1 ) );
-	
-	CPanelView::Draw( r );
+*/
+	//CPanelView::Draw( dirty );
 }
